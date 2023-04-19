@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { CoisasList } from '../components/List/List';
-import { CreateCoisa } from '../components/CreateCoisa/CreateCoisa';
+import { CreateCoisa } from '../components/PopUp/CreateCoisa/CreateCoisa';
 import { getCoisas } from '../../apis/coisas';
 
 export const Home = () => {

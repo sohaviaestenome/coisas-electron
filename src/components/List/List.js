@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { List, ListItem, ListItemAvatar, ListItemSecondaryAction, ListItemText, Avatar } from '@mui/material';
-import DeleteConfirmation from '../PopUp/DeleteConfirmation/Delete';
+import DeleteConfirmation from '../PopUp/DeleteConfirmation/DeleteConfirmation';
 import FolderIcon from '@mui/icons-material/Folder';
 
 export const CoisasList = (props) => {

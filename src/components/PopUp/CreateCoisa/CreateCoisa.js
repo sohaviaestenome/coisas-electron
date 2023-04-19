@@ -7,7 +7,6 @@ import { CreateCoisaForm } from "../../CoisaForm/CreateCoisaForm";
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/lab/Alert';
 
-import './CoisaForm.css';
 
 export const CreateCoisa= (props) => {
   const [open, setOpen] = useState(false);
