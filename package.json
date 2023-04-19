@@ -15,11 +15,16 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "prebuild": "shx rm -rf build/electron",
+    "postbuild": "shx mv build/electron/main.js build/electron.js && shx cp -r app/* build/ && shx rm -rf build/electron && shx rm -rf build/main.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prebuild": "shx rm -rf build/electron",
-    "postbuild": "shx mv build/electron/main.js build/electron.js && shx cp -r app/* build/ && shx rm -rf build/electron && shx rm -rf build/main.js"
+    "electron-start": "electron .",
+    "electron-build": "electron-builder",
+    "dist:windows": "electron-builder --windows",
+    "dist:mac": "electron-builder --mac",
+    "dist:linux": "electron-builder --linux"
   },
   "eslintConfig": {
     "extends": [
