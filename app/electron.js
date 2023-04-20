@@ -46,3 +46,28 @@ app.on('window-all-closed', () => {
     app.quit()
   }
 })
+
+
+ipcMain.handle('getCoisas', async () => {
+  return await coisasController.getCoisas();
+});
+
+ipcMain.handle('addCoisa', async (_, coisa) => {
+  return await coisasController.addCoisa(coisa);
+});
+
+ipcMain.handle('updateCoisa', async (_, id, updatedCoisa) => {
+  return await coisasController.updateCoisa(id, updatedCoisa);
+});
+
+ipcMain.handle('getCoisaById', async (_, id) => {
+  return await coisasController.getCoisaById(id);
+});
+
+ipcMain.handle('deleteCoisa', async (_, id) => {
+  return await coisasController.deleteCoisa(id);
+});
+
+ipcMain.handle('getCidades', async () => {
+  return await coisasController.getCidades();
+});

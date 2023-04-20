@@ -1,12 +1,14 @@
 //preload.js
+
 const { contextBridge, ipcRenderer } = require('electron');
-const coisasController = require('../db/coisas.controller');
+
+console.log('Preload script loaded');
 
 contextBridge.exposeInMainWorld('electron', {
-  getCoisas: coisasController.getCoisas,
-  addCoisa: coisasController.addCoisa,
-  updateCoisa: coisasController.updateCoisa,
-  getCoisaById: coisasController.getCoisaById,
-  deleteCoisa: coisasController.deleteCoisa,
-  getCidades: coisasController.getCidades,
+  getCoisas: () => ipcRenderer.invoke('getCoisas'),
+  addCoisa: (coisa) => ipcRenderer.invoke('addCoisa', coisa),
+  updateCoisa: (id, updatedCoisa) => ipcRenderer.invoke('updateCoisa', id, updatedCoisa),
+  getCoisaById: (id) => ipcRenderer.invoke('getCoisaById', id),
+  deleteCoisa: (id) => ipcRenderer.invoke('deleteCoisa', id),
+  getCidades: () => ipcRenderer.invoke('getCidades'),
 });
