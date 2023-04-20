@@ -1,0 +1,37 @@
+appId: PS worldwide
+productName: Coisas
+directories:
+  output: dist
+  buildResources: assets
+files:
+  - build/**
+  - public/**
+  - app/*
+  - db/*
+  - package.json
+  - node_modules/**
+mac:
+  category: your.app.category
+  icon: assets/icon.icns
+  target: ['dmg']
+  artifactName: "${productName}-${version}-${arch}.${ext}"
+  extendInfo:
+    LSUIElement: 1
+  extraResources:
+    - from: app/electron.js
+      to: electron.js
+linux:
+  icon: assets/icon.png
+  target: ['deb']
+  artifactName: "${productName}-${version}-${arch}.${ext}"
+  extraResources:
+    - from: app/electron.js
+      to: electron.js
+win:
+  icon: assets/CpuLightning.ico
+  target:
+    - 'portable'
+  artifactName: "${productName}-${version}-${arch}.${ext}"
+  extraResources:
+    - from: app/electron.js
+      to: electron.js
