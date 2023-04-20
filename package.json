@@ -4,6 +4,10 @@
   "private": true,
   "main": "app/electron.js",
   "homepage": "./",
+  "author": {
+    "name": "Your Name",
+    "email": "your.email@example.com"
+  },
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
@@ -25,7 +29,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "postbuild": "shx cp -r app/* build/",
+    "postbuild": "shx cp -r app/* build/ && shx cp -r db build/",
     "build": "react-scripts build",
     "test": "ELECTRON_ENV=testing jest",
     "eject": "react-scripts eject",

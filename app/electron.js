@@ -1,6 +1,6 @@
 //electron.js
 const { app, BrowserWindow, ipcMain, dialog } = require("electron");
-const coisasController = require('..//db/coisas.controller');
+const coisasController = require('../db/coisas.controller');
 const path = require("path");
 const dotenv = require("dotenv");
 
