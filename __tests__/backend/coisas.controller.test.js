@@ -1,5 +1,5 @@
-const { db } = require('../db/index');
-const coisasController = require('../controllers/coisas.controller');
+const { db } = require('../../db/index');
+const coisasController = require('../../db/coisas.controller');
 
 beforeAll(async () => {
   // Create the enum type and a test table with test data if they don't already exist
@@ -22,12 +22,23 @@ beforeAll(async () => {
               destino Cidade NOT NULL
           );
           ALTER TABLE items ADD CONSTRAINT unique_item UNIQUE (nome);
-          INSERT INTO items (nome, origem, quantidade, destino)
-          VALUES ('Test Item', 'Lisboa'::Cidade, 5, 'Porto'::Cidade)
-          ON CONFLICT (nome) DO NOTHING;
       END IF;
   END$$;
   `);
+});
+
+beforeEach(async () => {
+  // Insert test data before each test
+  await db.query(`
+    INSERT INTO items (nome, origem, quantidade, destino)
+    VALUES ('Test Item', 'Lisboa'::Cidade, 5, 'Porto'::Cidade)
+    ON CONFLICT (nome) DO NOTHING;
+  `);
+});
+
+afterEach(async () => {
+  // Delete test data after each test
+  await db.query("DELETE FROM items WHERE nome = 'Test Item';");
 });
 
 describe('coisas.controller', () => {
@@ -45,4 +56,17 @@ describe('coisas.controller', () => {
     expect(response.data.length).toBeGreaterThan(0);
   });
   
+  test('delete a coisa', async () => {
+    // Get the ID of the test item
+    const itemIdResult = await db.query("SELECT id FROM items WHERE nome = 'Test Item';");
+    const itemId = itemIdResult.rows[0].id;
+
+    // Test deleteCoisa function
+    const response = await coisasController.deleteCoisa(itemId);
+    expect(response.status).toBe('Success');
+
+    // Verify that the record was deleted
+    const verifyResult = await db.query("SELECT * FROM items WHERE id=$1", [itemId]);
+    expect(verifyResult.rowCount).toBe(0);
+  });
 });
