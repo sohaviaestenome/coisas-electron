@@ -36,7 +36,7 @@ export const CreateCoisa= (props) => {
         Create Coisa a Levar
       </Button>
       <Dialog open={open} onClose={handleClose}   >
-        <DialogTitle>Create Sleep Activity</DialogTitle>
+        <DialogTitle>Criar Coisa a Levar</DialogTitle>
         <div className = "sleepform" style={{ padding: 20, overflow: "hidden" }}>
           <CreateCoisaForm 
           onCancel={handleClose}

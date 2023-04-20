@@ -1,5 +1,6 @@
-//main.js
+//electron.js
 const { app, BrowserWindow, ipcMain, dialog } = require("electron");
+const coisasController = require('..//db/coisas.controller');
 const path = require("path");
 const dotenv = require("dotenv");
 
@@ -53,6 +54,7 @@ ipcMain.handle('getCoisas', async () => {
 });
 
 ipcMain.handle('addCoisa', async (_, coisa) => {
+  console.log(coisa, 'coisa electron addCoisa')
   return await coisasController.addCoisa(coisa);
 });
 

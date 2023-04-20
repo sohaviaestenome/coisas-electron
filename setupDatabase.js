@@ -40,7 +40,7 @@ const client = new Client({
       nome TEXT NOT NULL,
       origem Cidade NOT NULL,
       destino Cidade NOT NULL,
-      quantidade INTEGER DEFAULT 1 NOT NULL
+      quantidade INTEGER DEFAULT 1 
     );
   `;
 

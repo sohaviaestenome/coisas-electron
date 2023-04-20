@@ -26,6 +26,7 @@ exports.getCoisas = async () => {
 };
 
 exports.addCoisa = async (data) => {
+  
   const { nome, origem, quantidade, destino } = data;
 
   const query = "INSERT INTO items(nome, origem, quantidade, destino) VALUES($1, $2, $3, $4) RETURNING *";

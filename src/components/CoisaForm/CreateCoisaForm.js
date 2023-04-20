@@ -15,7 +15,7 @@ export const CreateCoisaForm = (props) => {
 
   const onSubmit = async (data) => {
     try {
-      const response = await window.electron.addCoisa(data.nome, data.origem, data.destino, data.quantidade);
+      const response = await window.electron.addCoisa(data);
       onAdd(response.data); // Call the onAdd function here
       reset();
       handleClose(); // Close the dialog
@@ -29,8 +29,8 @@ export const CreateCoisaForm = (props) => {
   const fetchCidades = async () => {
     try {
       const response = await window.electron.getCidades();
-      console.log(response);
-      setCidades(response);
+      console.log("Cidades:", response);
+      setCidades(response.data);
     } catch (error) {
       console.error(error);
     }
@@ -83,12 +83,6 @@ export const CreateCoisaForm = (props) => {
             ))}
           </TextField>
         )}
-      />
-      <Controller
-        name="quantidade"
-        control={control}
-        defaultValue=""
-        render={({ field }) => <TextField {...field} type="number" label="Quantidade" required fullWidth />}
       />
       <div>
         <Button type="submit" color="primary" variant="contained">
