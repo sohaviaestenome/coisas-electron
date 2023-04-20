@@ -2,10 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import { TextField, Button, MenuItem } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
-import { addCoisa, getCidades } from '../../apis/coisas';
 
 export const CreateCoisaForm = (props) => {
-  const {onCancel, onAdd, handleClose, setAlertType, setOpenSnackbar} = props;
+  const { onCancel, onAdd, handleClose, setAlertType, setOpenSnackbar } = props;
   const { handleSubmit, control, reset, watch } = useForm();
   const [cidades, setCidades] = useState([]);
   const [origemCidades, setOrigemCidades] = useState([]);
@@ -16,7 +15,7 @@ export const CreateCoisaForm = (props) => {
 
   const onSubmit = async (data) => {
     try {
-      const response = await addCoisa(data.nome, data.origem, data.destino, data.quantidade);
+      const response = await window.electron.addCoisa(data.nome, data.origem, data.destino, data.quantidade);
       onAdd(response.data); // Call the onAdd function here
       reset();
       handleClose(); // Close the dialog
@@ -26,11 +25,10 @@ export const CreateCoisaForm = (props) => {
       console.error(error);
     }
   };
-  
 
   const fetchCidades = async () => {
     try {
-      const response = await getCidades();
+      const response = await window.electron.getCidades();
       console.log(response);
       setCidades(response);
     } catch (error) {
@@ -49,7 +47,7 @@ export const CreateCoisaForm = (props) => {
   useEffect(() => {
     setDestinoCidades(cidades.filter((cidade) => cidade.nome !== watchedOrigem));
   }, [cidades, watchedOrigem]);
-
+  
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Controller

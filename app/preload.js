@@ -1,15 +1,13 @@
 //preload.js
-const { contextBridge, ipcRenderer } = require('electron');
+const { contextBridge } = require('electron');
+const coisasController = require('./path/to/coisas.controller');
+
 
 contextBridge.exposeInMainWorld('electron', {
-  send: (channel, data) => {
-    ipcRenderer.send(channel, data);
-    console.log(channel, 'preload channel');
-  },
-  receive: (channel, callback) => {
-    ipcRenderer.on(channel, (event, ...args) => callback(...args));
-  },
-  invoke: (channel, ...args) => {
-    return ipcRenderer.invoke(channel, ...args);
-  },
+  getCoisas: coisasController.getCoisas,
+  addCoisa: coisasController.addCoisa,
+  updateCoisa: coisasController.updateCoisa,
+  getCoisaById: coisasController.getCoisaById,
+  deleteCoisa: coisasController.deleteCoisa,
+  getCidades: coisasController.getCidades,
 });

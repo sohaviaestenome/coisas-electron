@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { CoisasList } from '../components/List/List';
 import { CreateCoisa } from '../components/PopUp/CreateCoisa/CreateCoisa';
-import { getCoisas } from '../../apis/coisas';
 
 export const Home = () => {
   const [items, setItems] = useState([]);
@@ -9,7 +8,7 @@ export const Home = () => {
   const [pairs, setPairs] = useState([]);
 
   useEffect(() => {
-    getCoisas().then(res => {
+    window.electron.getCoisas().then(res => {
       setItems(res.data);
     });
   }, [coisaLength]);
