@@ -25,7 +25,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "postbuild": "shx cp -r app/* build/ && shx rm -rf build/electron && shx rm -rf build/main.js",
+    "postbuild": "shx cp -r app/* build/",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
