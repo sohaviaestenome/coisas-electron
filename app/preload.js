@@ -1,7 +1,6 @@
 //preload.js
-const { contextBridge } = require('electron');
-const coisasController = require('./path/to/coisas.controller');
-
+const { contextBridge, ipcRenderer } = require('electron');
+const coisasController = require('../db/coisas.controller');
 
 contextBridge.exposeInMainWorld('electron', {
   getCoisas: coisasController.getCoisas,
