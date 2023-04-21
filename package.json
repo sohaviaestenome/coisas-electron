@@ -30,7 +30,7 @@
   "scripts": {
     "start": "react-scripts start",
     "postbuild": "shx cp -r app/* build/ && shx cp -r db build/",
-    "build": "react-scripts build",
+    "build": "ELECTRON_ENV=production react-scripts build",
     "test": "ELECTRON_ENV=testing jest",
     "eject": "react-scripts eject",
     "electron-start": "electron .",
