@@ -28,7 +28,7 @@ const client = new Client({
 (async () => {
   const cidadeEnumStmt = `
     DO $$ BEGIN
-      CREATE TYPE Cidade AS ENUM ('Cidade1', 'Cidade2', 'Cidade3', 'Cidade4', 'Cidade5');
+      CREATE TYPE Cidade AS ENUM ('Lisboa', 'Raposeira', 'Caldas', 'Serra do Bouro');
     EXCEPTION
       WHEN duplicate_object THEN null;
     END $$;

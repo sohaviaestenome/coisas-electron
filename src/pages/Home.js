@@ -24,7 +24,7 @@ export const Home = () => {
     }, {});
     setPairs(pairs);
   }, [items]);
-
+  
   return (
     <div>
       <h1>Coisas a Levar</h1>
