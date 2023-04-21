@@ -29,7 +29,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "postbuild": "shx cp -r app build/ && shx cp -r db build/",
+    "postbuild": "shx cp -r app build/ && shx cp -r db build/ && cp .env build/",
     "build": "react-scripts build",
     "test": "ELECTRON_ENV=testing jest",
     "eject": "react-scripts eject",

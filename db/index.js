@@ -1,6 +1,11 @@
 //index.js
 const { Pool } = require('pg');
-require('dotenv').config();
+const path = require("path");
+const dotenv = require("dotenv");
+
+const envPath = process.env.ELECTRON_ENV === "development" ? ".env" : path.join(__dirname, '../build/.env');
+
+dotenv.config({ path: envPath });
 
 const {
   PGHOST,

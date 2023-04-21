@@ -4,7 +4,9 @@ const coisasController = require('../db/coisas.controller');
 const path = require("path");
 const dotenv = require("dotenv");
 
-dotenv.config();
+const envPath = process.env.ELECTRON_ENV === "development" ? ".env" : path.join(__dirname, '../build/.env');
+
+dotenv.config({ path: envPath });
 
 console.log('Preload path:', path.join(__dirname, 'preload.js'));
 
