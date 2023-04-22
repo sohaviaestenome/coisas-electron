@@ -51,7 +51,9 @@ export const CreateCoisa= (props) => {
             setCoisaLength(coisaLength + 1); // Update the coisaLength here
           }}
         />
-        <Snackbar
+        </div>
+      </Dialog>
+      <Snackbar
           open={openSnackbar}
           autoHideDuration={3000}
           onClose={handleCloseSnackbar}
@@ -61,8 +63,6 @@ export const CreateCoisa= (props) => {
             Coisa a levar criada com sucesso!
           </Alert>
         </Snackbar>
-        </div>
-      </Dialog>
     </div>
   );
 };
