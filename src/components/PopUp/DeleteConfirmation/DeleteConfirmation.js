@@ -31,7 +31,7 @@ export default function DeleteConfirmation(props) {
   }
   return (
     <div>
-      <DeleteIcon  onClick={handleClickOpen} />
+      <DeleteIcon  onClick={handleClickOpen} style={{ cursor: 'pointer' }} />
       <Dialog
         open={open}
         TransitionComponent={Transition}
