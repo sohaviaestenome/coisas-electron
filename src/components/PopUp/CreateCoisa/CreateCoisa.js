@@ -6,6 +6,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { CreateCoisaForm } from "../../CoisaForm/CreateCoisaForm";
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/lab/Alert';
+import styles from './CreateCoisa.css'; 
 
 
 export const CreateCoisa= (props) => {
@@ -37,7 +38,7 @@ export const CreateCoisa= (props) => {
       </Button>
       <Dialog open={open} onClose={handleClose}   >
         <DialogTitle>Criar Coisa a Levar</DialogTitle>
-        <div className = "sleepform" style={{ padding: 20, overflow: "hidden" }}>
+        <div className={styles.sleepform}>
           <CreateCoisaForm 
           onCancel={handleClose}
           handleClose={handleClose}
