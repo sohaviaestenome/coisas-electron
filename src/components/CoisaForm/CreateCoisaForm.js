@@ -18,11 +18,11 @@ export const CreateCoisaForm = (props) => {
   const onSubmit = async (data) => {
     try {
       const response = await window.electron.addCoisa(data);
-      onAdd(response.data); // Call the onAdd function here
+      onAdd(response.data); 
       reset();
-      handleClose(); // Close the dialog
+      handleClose(); 
       setAlertType('success');
-      setOpenSnackbar(true); // Show the Snackbar
+      setOpenSnackbar(true); 
     } catch (error) {
       console.error(error);
     }

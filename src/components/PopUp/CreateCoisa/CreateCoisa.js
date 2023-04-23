@@ -58,7 +58,7 @@ export const CreateCoisa= (props) => {
           open={openSnackbar}
           autoHideDuration={3000}
           onClose={handleCloseSnackbar}
-          anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
         >
           <Alert onClose={handleCloseSnackbar} severity={alertType} variant="filled">
             Coisa a levar criada com sucesso!
