@@ -56,6 +56,10 @@ ipcMain.handle('getCoisas', async () => {
   return await coisasController.getCoisas();
 });
 
+ipcMain.handle('getCidades', async () => {
+  return await coisasController.getCidades();
+});
+
 ipcMain.handle('addCoisa', async (_, coisa) => {
   console.log(coisa, 'coisa electron addCoisa')
   return await coisasController.addCoisa(coisa);
@@ -73,6 +77,3 @@ ipcMain.handle('deleteCoisa', async (_, id) => {
   return await coisasController.deleteCoisa(id);
 });
 
-ipcMain.handle('getCidades', async () => {
-  return await coisasController.getCidades();
-});
