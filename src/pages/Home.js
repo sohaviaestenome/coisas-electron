@@ -1,6 +1,6 @@
-import React, { useState, useEffect, lazy, Suspense } from 'react';
+import React, { useState, useEffect } from 'react';
 import { CoisasList } from '../components/List/List';
-const CreateCoisa = lazy(() => import('../components/PopUp/CreateCoisa/CreateCoisa'));
+import { CreateCoisa } from '../components/PopUp/CreateCoisa/CreateCoisa';
 
 export const Home = () => {
   const [items, setItems] = useState([]);
@@ -28,9 +28,7 @@ export const Home = () => {
   return (
     <div>
       <h1>Coisas a Levar</h1>
-      <Suspense fallback={<div>Loading...</div>}>
       <CreateCoisa coisaLength={coisaLength} setCoisaLength={setCoisaLength} />
-      </Suspense>
       <div>
         {Object.entries(pairs).map(([pair, items]) => {
           const [origem, destino] = pair.split('-');

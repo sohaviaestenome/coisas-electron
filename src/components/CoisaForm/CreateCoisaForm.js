@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { TextField, Button, MenuItem } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
+import './CreateCoisaForm.css';
+
 
 export const CreateCoisaForm = (props) => {
   const { onCancel, onAdd, handleClose, setAlertType, setOpenSnackbar } = props;
@@ -50,41 +52,47 @@ export const CreateCoisaForm = (props) => {
   
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Controller
-        name="nome"
-        control={control}
-        defaultValue=""
-        render={({ field }) => <TextField {...field} label="Nome" required fullWidth />}
-      />
-       <Controller
-        name="origem"
-        control={control}
-        defaultValue=""
-        render={({ field }) => (
-          <TextField {...field} select label="Origem" required fullWidth>
-            {origemCidades.map((cidade) => (
-              <MenuItem key={cidade.nome} value={cidade.nome}>
-                {cidade.nome}
-              </MenuItem>
-            ))}
-          </TextField>
-        )}
-      />
-      <Controller
-        name="destino"
-        control={control}
-        defaultValue=""
-        render={({ field }) => (
-          <TextField {...field} select label="Destino" required fullWidth>
-            {destinoCidades.map((cidade) => (
-              <MenuItem key={cidade.nome} value={cidade.nome}>
-                {cidade.nome}
-              </MenuItem>
-            ))}
-          </TextField>
-        )}
-      />
-      <div>
+      <div className="form-elements">
+        <Controller
+          name="nome"
+          control={control}
+          defaultValue=""
+          render={({ field }) => <TextField {...field} label="Nome" required fullWidth />}
+        />
+      </div>
+      <div className="form-elements">
+        <Controller
+          name="origem"
+          control={control}
+          defaultValue=""
+          render={({ field }) => (
+            <TextField {...field} select label="Origem" required fullWidth>
+              {origemCidades.map((cidade) => (
+                <MenuItem key={cidade.nome} value={cidade.nome}>
+                  {cidade.nome}
+                </MenuItem>
+              ))}
+            </TextField>
+          )}
+        />
+      </div>
+      <div className="form-elements">
+        <Controller
+          name="destino"
+          control={control}
+          defaultValue=""
+          render={({ field }) => (
+            <TextField {...field} select label="Destino" required fullWidth>
+              {destinoCidades.map((cidade) => (
+                <MenuItem key={cidade.nome} value={cidade.nome}>
+                  {cidade.nome}
+                </MenuItem>
+              ))}
+            </TextField>
+          )}
+        />
+      </div>
+      <div className="button-group">
         <Button type="submit" color="primary" variant="contained">
           Criar
         </Button>
