@@ -1,4 +1,3 @@
-// List.js
 import React, { useMemo } from 'react';
 import {
   List,
@@ -6,27 +5,19 @@ import {
   ListItemAvatar,
   ListItemSecondaryAction,
   ListItemText,
-  Avatar,
-  CircularProgress,
-  Box
+  Avatar
 } from '@mui/material';
 import DeleteConfirmation from '../PopUp/DeleteConfirmation/DeleteConfirmation';
 import FolderIcon from '@mui/icons-material/Folder';
 
 export const CoisasList = (props) => {
-  const { origem, destino, items, coisaLength, setCoisaLength, loading } = props;
+  const { origem, destino, items, coisaLength, setCoisaLength } = props;
 
   const filteredItems = useMemo(() => {
     return items.filter(item => item.origem === origem && item.destino === destino);
   }, [items, origem, destino]);
 
-  if (loading) {
-    return (
-      <Box display="flex" justifyContent="center" marginTop={2}>
-        <CircularProgress />
-      </Box>
-    );
-  } else if (filteredItems.length > 0) {
+  if (filteredItems.length > 0) {
     return (
       <List dense={false}>
         {filteredItems.map(item => (
@@ -45,6 +36,6 @@ export const CoisasList = (props) => {
       </List>
     );
   } else {
-    return null;    
+    return null;
   }
 };
