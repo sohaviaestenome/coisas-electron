@@ -35,7 +35,7 @@ export const Home = () => {
       <h1>Coisas a Levar</h1>
       <CreateCoisa coisaLength={coisaLength} setCoisaLength={setCoisaLength} />
       {noCoisas && (
-        <p className="no-coisas">No Coisas</p>
+        <p className="no-coisas"></p>
       )}
       <div>
         {Object.entries(pairs).map(([pair, items]) => {
