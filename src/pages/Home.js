@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { CoisasList } from '../components/List/List';
 import { CreateCoisa } from '../components/PopUp/CreateCoisa/CreateCoisa';
+import './Home.css';
 
 export const Home = () => {
   const [items, setItems] = useState([]);
@@ -34,7 +35,7 @@ export const Home = () => {
       <h1>Coisas a Levar</h1>
       <CreateCoisa coisaLength={coisaLength} setCoisaLength={setCoisaLength} />
       {noCoisas && (
-        <p style={{ color: 'red', fontWeight: 'bold', textAlign: 'center' }}>No Coisas</p>
+        <p className="no-coisas">No Coisas</p>
       )}
       <div>
         {Object.entries(pairs).map(([pair, items]) => {
