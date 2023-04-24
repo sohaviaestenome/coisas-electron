@@ -6,10 +6,14 @@ export const Home = () => {
   const [items, setItems] = useState([]);
   const [coisaLength, setCoisaLength] = useState(100);
   const [pairs, setPairs] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const noCoisas = !loading && items.length === 0;
 
   useEffect(() => {
     window.electron.getCoisas().then(res => {
       setItems(res.data);
+      setLoading(false);
     });
   }, [coisaLength]);
 
@@ -29,13 +33,16 @@ export const Home = () => {
     <div>
       <h1>Coisas a Levar</h1>
       <CreateCoisa coisaLength={coisaLength} setCoisaLength={setCoisaLength} />
+      {noCoisas && (
+        <p style={{ color: 'red', fontWeight: 'bold', textAlign: 'center' }}>No Coisas</p>
+      )}
       <div>
         {Object.entries(pairs).map(([pair, items]) => {
           const [origem, destino] = pair.split('-');
           return (
             <div key={pair}>
               <h2>{`${origem} - ${destino}`}</h2>
-              <CoisasList origem={origem} destino={destino} items={items} coisaLength={coisaLength} setCoisaLength={setCoisaLength} />
+              <CoisasList origem={origem} destino={destino} items={items} coisaLength={coisaLength} setCoisaLength={setCoisaLength} loading={loading} />
             </div>
           );
         })}
