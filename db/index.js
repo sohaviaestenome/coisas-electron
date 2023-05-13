@@ -3,7 +3,7 @@ const { Pool } = require('pg');
 const path = require("path");
 const dotenv = require("dotenv");
 
-const envPath = process.env.ELECTRON_ENV === "development" ? ".env" : path.join(__dirname, '../build/.env');
+const envPath = process.env.ELECTRON_ENV === "development" ? ".env" : path.join(__dirname, '../.env');
 
 dotenv.config({ path: envPath });
 

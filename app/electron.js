@@ -5,7 +5,7 @@ const path = require("path");
 const dotenv = require("dotenv");
 
 function getEnvPath() {
-  return process.env.ELECTRON_ENV === "development" ? ".env" : path.join(__dirname, '../build/.env');
+  return process.env.ELECTRON_ENV === "development" ? ".env" : path.join(__dirname, './.env');
 }
 dotenv.config({ path: getEnvPath() });
 
